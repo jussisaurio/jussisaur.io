@@ -1,6 +1,7 @@
 const menu = {
   about: {
-    title: "About me"
+    title: "About me",
+    selected: true
   },
   cv: {
     title: "CV"
@@ -24,7 +25,7 @@ const menu = {
     title: "Links"
   },
   technical: {
-    title: "Technical stuff"
+    title: "Technical things"
   }
 };
 
@@ -134,7 +135,7 @@ const body = {
     ]
   },
   technical: {
-    title: "Technical stuff",
+    title: "Technical :)",
     paragraphs: [
       {
         text:

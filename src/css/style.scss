@@ -40,20 +40,22 @@ main {
   background-size: cover, cover;
 }
 
-.logo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0.5vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4vw;
-  width: 4vw;
-  font-size: 4rem;
+.header {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 45vw;
+  height: 7vh;
   background: rgb(175, 175, 175);
   color: black;
   mix-blend-mode: screen;
+  text-align: center;
+  letter-spacing: 0.2vw;
+  text-transform: uppercase;
+  font-size: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu {
@@ -94,12 +96,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 2vw;
   text-transform: uppercase;
   transition: all 0.2s;
   cursor: pointer;
   border-radius: 1rem;
   text-align: center;
+  white-space: pre-line;
+  word-wrap: break-word;
 }
 
 .menu-item__content:hover {
@@ -124,10 +128,10 @@ article.content-container {
   opacity: 0;
   transition: opacity 0.2s;
   position: fixed;
-  top: 5vh;
+  top: 12vh;
   left: 5vw;
   width: 45vw;
-  height: 90vh;
+  height: 83vh;
   background-color: rgba(27, 13, 7, 0.4);
   color: #edeadfe6;
   padding: 2rem;
@@ -139,17 +143,24 @@ article.content-container {
 
 @media screen and (max-width: 850px) {
   article.content-container {
-    width: 90vw;
+    width: 100vw;
     height: 60vh;
-    left: 5vh;
+    left: 0;
+    top: 7vh;
+  }
+
+  .header {
+    top: 0;
+    left: 0;
+    width: 100vw;
   }
 
   .menu {
     padding: 2rem;
     top: 65vh;
-    left: 5vw;
+    left: 0;
     height: 30vh;
-    width: 90vw;
+    width: 100vw;
     grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
     grid-template-rows: initial;
   }

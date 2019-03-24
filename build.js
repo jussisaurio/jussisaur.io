@@ -81,6 +81,7 @@ for (const { targetFilename, content, template } of Object.values(pages)) {
       type="radio"
       class="menu-item__selector"
       name="menu-selector"
+      ${content.menu[key].selected ? "checked" : ""}
     />
     <div class="menu-item__content">
       <span class="menu-item__content-text">${content.menu[key].title}</span>
