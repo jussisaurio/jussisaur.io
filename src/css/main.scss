@@ -7,7 +7,7 @@
 }
 
 html {
-  font-size: 62.5%; /* 100% is 16px by default*/
+  font-size: 2vh;
 }
 
 body {
@@ -21,32 +21,59 @@ body {
   height: 100vh;
 }
 
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p,
+li {
+  font-size: 1rem;
+}
+
 main {
   display: block;
   position: relative;
   height: 100vh;
-  background: linear-gradient(rgba(18, 22, 29, 0.801), rgba(40, 53, 77, 0.801))
-      no-repeat,
+  background: linear-gradient(#12161dcc, rgba(40, 53, 77, 0.801)) no-repeat,
     url("../img/bg_brown_canvas.jpg") no-repeat;
   background-size: cover, cover;
 }
 
 .header {
+  transition: all 0.4s;
   position: fixed;
   top: 5vh;
   left: 5vw;
   width: 45vw;
   height: 7vh;
-  background: rgb(175, 175, 175);
+  background: #edeadf;
   color: black;
   mix-blend-mode: screen;
   text-align: center;
-  letter-spacing: 0.2vw;
+  letter-spacing: 0.3vw;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: #99a6d7;
+  &:visited,
+  &:active {
+    color: #99a6d7;
+  }
+
+  &:hover {
+    color: #edeadf;
+  }
 }
 
 @import "./menu.scss";

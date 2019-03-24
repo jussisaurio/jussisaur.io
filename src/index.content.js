@@ -31,30 +31,10 @@ const menu = {
 
 const body = {
   about: {
-    title: "About me",
-    paragraphs: [
-      {
-        text:
-          "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"
-      },
-      {
-        text:
-          "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"
-      }
-    ]
+    markdown: "./markdown/about.md"
   },
   cv: {
-    title: "CV",
-    paragraphs: [
-      {
-        text:
-          "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"
-      },
-      {
-        text:
-          "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"
-      }
-    ]
+    markdown: "./markdown/cv.md"
   },
   projects: {
     title: "Project",

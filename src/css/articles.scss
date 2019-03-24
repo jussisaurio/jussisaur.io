@@ -1,6 +1,6 @@
 article.content-container {
-  opacity: 0;
-  transition: opacity 0.2s;
+  transform: translateX(-100vw);
+  transition: all 0.4s;
   position: fixed;
   top: 12vh;
   left: 5vw;
@@ -9,8 +9,23 @@ article.content-container {
   background-color: rgba(27, 13, 7, 0.4);
   color: #edeadfe6;
   padding: 2rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  p {
+    margin-bottom: 1.5vh;
+  }
+
+  ul,
+  li {
+    display: block;
+  }
+
+  ul {
+    margin-bottom: 2vh;
+  }
 }
 
 :checked ~ article.content-container {
-  opacity: 1;
+  transform: translate(0);
 }

@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const nodeSass = require("node-sass");
+const showdown = require("showdown");
+const markdownConverter = new showdown.Converter({
+  headerLevelStart: 3
+});
 
 function cleanDir(dir) {
   if (fs.existsSync(dir)) {
@@ -23,6 +27,10 @@ function copyDir(dir, target) {
       fs.writeFileSync(path.resolve(target, file), fs.readFileSync(filepath));
     });
   }
+}
+
+function convertMarkdown(path) {
+  return markdownConverter.makeHtml(fs.readFileSync(path, "utf8"));
 }
 
 const TAGS = {
@@ -94,23 +102,31 @@ for (const { targetFilename, content, template } of Object.values(pages)) {
   const contentItems = content.keys
     .map(key => {
       return `
-  <label class="menu-item__wrapper">
+  <div class="menu-item__wrapper">
     <input
       type="radio"
+      id="${content.menu[key].title}"
       class="menu-item__selector"
       name="menu-selector"
       ${content.menu[key].selected ? "checked" : ""}
     />
-    <div class="menu-item__content">
+    <label for="${content.menu[key].title}" class="menu-item__content">
       <span class="menu-item__content-text">${content.menu[key].title}</span>
-    </div>
+    </label>
     <article class="content-container">
-      <h2>${content.body[key].title}</h2>
+      ${
+        content.body[key].markdown
+          ? convertMarkdown(
+              path.resolve(SOURCE_DIR, content.body[key].markdown)
+            )
+          : `<h2>${content.body[key].title}</h2>
       ${content.body[key].paragraphs
         .map(paragraph => `<p>${paragraph.text}</p>`)
-        .join("\n")}
+        .join("\n")}`
+      }
+
     </article>
-  </label>
+  </div>
   `;
     })
     .join("");
