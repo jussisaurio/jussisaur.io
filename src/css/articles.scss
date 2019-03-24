@@ -1,0 +1,16 @@
+article.content-container {
+  opacity: 0;
+  transition: opacity 0.2s;
+  position: fixed;
+  top: 12vh;
+  left: 5vw;
+  width: 45vw;
+  height: 83vh;
+  background-color: rgba(27, 13, 7, 0.4);
+  color: #edeadfe6;
+  padding: 2rem;
+}
+
+:checked ~ article.content-container {
+  opacity: 1;
+}

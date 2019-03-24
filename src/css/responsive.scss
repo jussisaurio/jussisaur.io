@@ -1,0 +1,24 @@
+@media screen and (max-width: 850px) {
+  article.content-container {
+    width: 100vw;
+    height: 60vh;
+    left: 0;
+    top: 7vh;
+  }
+
+  .header {
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+
+  .menu {
+    padding: 2rem;
+    top: 65vh;
+    left: 0;
+    height: 30vh;
+    width: 100vw;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    grid-template-rows: initial;
+  }
+}

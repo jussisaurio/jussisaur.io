@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const nodeSass = require("node-sass");
 
 function cleanDir(dir) {
   if (fs.existsSync(dir)) {
@@ -26,9 +27,11 @@ function copyDir(dir, target) {
 
 const TAGS = {
   TITLE: "siteTitle",
-  MAIN_CONTENT: "mainContent"
+  MAIN_CONTENT: "mainContent",
+  STYLE_FILE: "styleFile"
 };
 const SOURCE_DIR = path.resolve(__dirname, "src");
+const STYLE_DIR = path.resolve(SOURCE_DIR, "css");
 const DESTINATION_DIR = path.resolve(__dirname, "dist");
 
 cleanDir(DESTINATION_DIR);
@@ -37,6 +40,21 @@ fs.mkdirSync(DESTINATION_DIR);
 copyDir(
   path.resolve(__dirname, "src", "img"),
   path.resolve(DESTINATION_DIR, "img")
+);
+
+const masterStyle = nodeSass.renderSync({
+  file: path.resolve(STYLE_DIR, "main.scss"),
+  includePaths: [STYLE_DIR]
+}).css;
+
+const masterStyleFilename = `style.${Math.random()
+  .toString(36)
+  .slice(2)}.css`;
+
+fs.mkdirSync(path.resolve(DESTINATION_DIR, "css"));
+fs.writeFileSync(
+  path.resolve(DESTINATION_DIR, "css", masterStyleFilename),
+  masterStyle
 );
 
 const filenames = fs.readdirSync(SOURCE_DIR);
@@ -98,6 +116,7 @@ for (const { targetFilename, content, template } of Object.values(pages)) {
     .join("");
 
   const output = template
+    .replace(`{{ ${TAGS.STYLE_FILE} }}`, `css/${masterStyleFilename}`)
     .replace(`{{ ${TAGS.TITLE} }}`, content.title)
     .replace(`{{ ${TAGS.MAIN_CONTENT} }}`, contentItems);
 

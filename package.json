@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node build && node-sass src/css -o dist/css",
+    "build": "node build",
     "watch": "npm run build && node watch.js"
   },
   "author": "",
